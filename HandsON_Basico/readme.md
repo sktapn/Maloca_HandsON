@@ -1,1 +1,0 @@
-Trabalhos feitos em sala.
