@@ -4,5 +4,5 @@
 
 ## ARTEFATOS A SEREM PRODUZIDOS: 
 - [x] Repositório Git
-- [ ] Esquema de Conexão
-- [ ] Big Picture
+- [x] Esquema de Conexão
+- [x] Big Picture
