@@ -3,9 +3,9 @@
 
 ## Hands-on básico
 
-- [ ] Big Picture
-- [ ] Organograma
-- [ ] Repositório
+- [x] Big Picture
+- [x] Organograma
+- [x] Repositório
 
 ## Big Picture
 ![big picture]
