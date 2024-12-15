@@ -3,8 +3,9 @@
 
 ## Hands-on básico
 
-- [ ] Sprint 0
-- [ ] Sprint 1
+- [ ] Big Picture
+- [ ] Organograma
+- [ ] Repositório
 
 ## Big Picture
 ![big picture]
