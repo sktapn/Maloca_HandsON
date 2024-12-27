@@ -5,8 +5,8 @@
 
 - [x] Sprint 0
 - [x] Sprint 1
-- [ ] Sprint 2
-- [ ] Release
+- [x] Sprint 2
+- [x] Release
 
 ## Repositório
 **Link**: https://github.com/sktapn/Maloca_HandsON
