@@ -1,4 +1,4 @@
-# Maloca das iCoisas — Repositório da Equipe Spear
+# Maloca das iCoisas — Repositório da Equipe Spear 
 
 Bem-vindo ao repositório da **Equipe Spear**! Este espaço é dedicado à criação, organização e compartilhamento de projetos inovadores na área de Internet das Coisas (IoT), com foco em soluções para a saúde. Os trabalhos apresentados aqui foram desenvolvidos por Abrahão e Luciano no curso **Maloca das iCoisas**.
 
