@@ -1,0 +1,86 @@
+// Definir os pinos
+const int pirPin1 = 13;      // Pino do primeiro sensor PIR
+const int pirPin2 = 14;      // Pino do segundo sensor PIR
+const int trigPin1 = 5;      // Pino Trig do primeiro sensor ultrassônico
+const int echoPin1 = 18;     // Pino Echo do primeiro sensor ultrassônico
+const int trigPin2 = 19;     // Pino Trig do segundo sensor ultrassônico
+const int echoPin2 = 21;     // Pino Echo do segundo sensor ultrassônico
+const int ledPin = 12;       // Pino do LED
+
+// Definir a distância mínima para acionar o LED (em cm)
+const float distanciaMinima = 5.0;
+
+void setup() {
+  // Configurar o pino do LED como saída
+  pinMode(ledPin, OUTPUT);
+  
+  // Configurar os pinos dos sensores PIR com resistores de pull-down internos
+  pinMode(pirPin1, INPUT_PULLDOWN);  // Ativa o resistor de pull-down interno no PIR 1
+  pinMode(pirPin2, INPUT_PULLDOWN);  // Ativa o resistor de pull-down interno no PIR 2
+  
+  // Configurar os pinos dos sensores ultrassônicos
+  pinMode(trigPin1, OUTPUT);
+  pinMode(echoPin1, INPUT);
+  pinMode(trigPin2, OUTPUT);
+  pinMode(echoPin2, INPUT);
+  
+  // Inicializar a comunicação serial (opcional, para depuração)
+  Serial.begin(115200);
+}
+
+void loop() {
+  // Ler o estado dos sensores PIR
+  int pirState1 = digitalRead(pirPin1);
+  int pirState2 = digitalRead(pirPin2);
+  
+  // Medir a distância com os sensores ultrassônicos
+  float distancia1 = medirDistancia(trigPin1, echoPin1);
+  float distancia2 = medirDistancia(trigPin2, echoPin2);
+  
+  if (pirState1 == HIGH || pirState2 == HIGH || distancia1 < distanciaMinima || distancia2 < distanciaMinima) {
+    // Ligar o LED se qualquer condição for verdadeira
+    digitalWrite(ledPin, HIGH);
+    
+    // Verificar qual sensor foi responsável
+    if (pirState1 == HIGH) {
+        Serial.println("LED ligado devido ao sensor PIR 1 detectando movimento!");
+    }
+    if (pirState2 == HIGH) {
+        Serial.println("LED ligado devido ao sensor PIR 2 detectando movimento!");
+    }
+    if (distancia1 < distanciaMinima) {
+        Serial.println("LED ligado devido ao sensor ultrassônico 1 detectar proximidade!");
+    }
+    if (distancia2 < distanciaMinima) {
+        Serial.println("LED ligado devido ao sensor ultrassônico 2 detectar proximidade!");
+    }
+    
+} else {
+    // Desligar o LED se nenhuma condição for verdadeira
+    digitalWrite(ledPin, LOW);
+    Serial.println("Nada detectado");
+    delay(100);
+}
+
+  
+  // Aguardar 100 milissegundos antes de verificar novamente
+  delay(100); // 100 milissegundos
+}
+
+// Função para medir a distância com o sensor ultrassônico
+float medirDistancia(int trigPin, int echoPin) {
+  // Enviar um pulso de 10 microssegundos no pino Trig
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+  
+  // Ler o tempo de resposta no pino Echo
+  long duracao = pulseIn(echoPin, HIGH);
+  
+  // Calcular a distância em centímetros
+  float distancia = duracao * 0.034 / 2; // Fórmula: (tempo * velocidade do som) / 2
+  
+  return distancia;
+}
