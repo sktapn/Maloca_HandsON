@@ -71,7 +71,7 @@ Os projetos do repositório são divididos em três níveis de dificuldade:
 
 ### 2. **Hands-on Intermediary**
 - **Objetivo:** Desenvolver competências intermediárias em programação e integração de dispositivos.
-- **Exemplo:** [Projeto em Desenvolvimento].
+- **Exemplo:** [BabySafe](https://github.com/sktapn/Maloca_HandsON/tree/main/Hands-on%20_Intermediary/Sprint%2003).
 
 ### 3. **Hands-on Advanced**
 - **Objetivo:** Criar soluções complexas com integração de múltiplos sensores e atuadores.
