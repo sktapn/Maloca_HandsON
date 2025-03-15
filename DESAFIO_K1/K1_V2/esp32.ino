@@ -6,6 +6,7 @@
 const char* ssid = "CIT_Alunos";  // Nome da rede Wi-Fi
 const char* password = "alunos@2024"; // Senha do Wi-Fi
 const char* server = "https://subsequent-nine-handle.glitch.me/"; // URL do servidor
+const char* ambulanceId = "AMB-001"; // Identificador único da ambulância
 
 // Configuração do GPS
 #define RXD2 16  // Pino RX do ESP32 conectado ao TX do GPS
@@ -56,8 +57,8 @@ void loop() {
         // Verifica se o Wi-Fi está conectado antes de enviar os dados
         if (WiFi.status() == WL_CONNECTED) {
             HTTPClient http;  // Cria um objeto HTTP
-            String url = String(server) + "/update?lat=" + String(lat, 6) + "&lon=" + String(lon, 6);  
-            // Monta a URL com os parâmetros de latitude e longitude
+            String url = String(server) + "/update?lat=" + String(lat, 6) + "&lon=" + String(lon, 6) + "&id=" + String(ambulanceId);  
+            // Monta a URL com os parâmetros de latitude, longitude e ID
 
             http.begin(url);  // Inicia a requisição HTTP
             int httpCode = http.GET();  // Faz a requisição GET ao servidor
