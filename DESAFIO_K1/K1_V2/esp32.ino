@@ -97,8 +97,7 @@ void loop() {
         } else {
             Serial.println("Aguardando coordenadas válidas do GPS...");
             
-            // Para fins de teste em Boa Vista, você pode usar coordenadas fixas
-            // Descomente as linhas abaixo para testar sem um GPS real
+            // Para fins de teste, você pode usar coordenadas fixas
             /*
             float lat = 2.8235 + (random(-100, 100) / 10000.0);  // Pequena variação aleatória
             float lon = -60.6758 + (random(-100, 100) / 10000.0);
@@ -140,12 +139,16 @@ void connectToWiFi() {
 void sendLocationData(float lat, float lon, const char* status) {
     HTTPClient http;
     
-    // Usa o endpoint com parâmetros adicionais
+    // Cria a URL com os parâmetros
     String url = String(serverUrl) + "/update?lat=" + String(lat, 6) + 
                  "&lon=" + String(lon, 6) + 
                  "&id=" + String(ambulanceId) +
                  "&status=" + String(status);
     
+    // Exibe a URL que será enviada
+    Serial.println("URL Enviada: " + url);
+
+    // Inicia a requisição HTTP GET
     http.begin(url);
     int httpCode = http.GET();
     
