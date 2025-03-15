@@ -5,7 +5,7 @@
 // Configuração do Wi-Fi
 const char* ssid = "CIT_Alunos";  // Nome da rede Wi-Fi
 const char* password = "alunos@2024"; // Senha do Wi-Fi
-const char* server = "https://kindly-classic-passbook.glitch.me"; // URL do servidor
+const char* server = "https://subsequent-nine-handle.glitch.me/"; // URL do servidor
 
 // Configuração do GPS
 #define RXD2 16  // Pino RX do ESP32 conectado ao TX do GPS
